@@ -576,6 +576,7 @@
 
     <!-- Override clirr version to be able to build the site on Java 8 -->
     <commons.clirr.version>2.8</commons.clirr.version>
+    <checkstyle.plugin.version>2.17</checkstyle.plugin.version>
   </properties>
 
 
@@ -646,7 +647,6 @@
           </ignorePathsToDelete>
         </configuration>
       </plugin>
-
       <plugin>
         <groupId>org.pitest</groupId>
         <artifactId>pitest-maven</artifactId>
@@ -663,7 +663,14 @@
           <failWhenNoMutations>false</failWhenNoMutations>
         </configuration>
       </plugin>
-
+      <plugin>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>${checkstyle.plugin.version}</version>
+        <configuration>
+          <configLocation>${basedir}/checkstyle.xml</configLocation>
+          <enableRulesSummary>false</enableRulesSummary>
+        </configuration>
+      </plugin>
     </plugins>
 
   </build>
@@ -672,7 +679,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.17</version>
+        <version>${checkstyle.plugin.version}</version>
         <configuration>
           <configLocation>${basedir}/checkstyle.xml</configLocation>
           <enableRulesSummary>false</enableRulesSummary>
